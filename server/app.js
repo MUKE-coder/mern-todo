@@ -4,14 +4,17 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
 const User = require("./models/User");
 const Todo = require("./models/Todo");
 
+dotenv.config();
+
 const app = express();
 mongoose
   .connect(
-    "mongodb+srv://jbwebdeveloper:jbsmile8@twitterclonecluster.g17zs.mongodb.net/TodoDb?retryWrites=true&w=majority",
+    `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@twitterclonecluster.g17zs.mongodb.net/TodoDb?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
